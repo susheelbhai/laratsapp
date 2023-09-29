@@ -1,0 +1,26 @@
+{
+    "name": "susheelbhai/laratsapp",
+    "description": "this packae can be used to send whatsapp message using some service providers api",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Susheelbhai\\WhatsApp\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Susheelbhai\\WhatsApp\\WhatsAppServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Susheel Kumar Singh",
+            "email": "susheelkrsingh306@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
