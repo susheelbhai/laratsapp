@@ -4,6 +4,7 @@ namespace Susheelbhai\WhatsApp;
 
 use Illuminate\Support\ServiceProvider;
 use Susheelbhai\WhatsApp\Services\WhatsAppService;
+use Illuminate\Foundation\AliasLoader;
 
 class WhatsAppServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,8 @@ class WhatsAppServiceProvider extends ServiceProvider
         $this->app->bind('whatsapp', function(){
             return new WhatsAppService();
         });
+        $loader = AliasLoader::getInstance();
+        $loader->alias('WhatsApp', \Susheelbhai\WhatsApp\Services\Facades\WhatsApp::class);
     }
 
     
