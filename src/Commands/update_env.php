@@ -26,8 +26,8 @@ class update_env extends Command
 
     public $env_values = array(
          'WHATSAPP_END_POINT' => '',
-         'WHATSAPP_TOKEN' => '',
-         'WHATSAPP_iNSTANCE' => '',
+         'WHATSAPP_API_KEY' => '',
+         'WHATSAPP_API_KEY2' => '',
     );
 
     public function handle()

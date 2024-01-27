@@ -6,11 +6,11 @@ return [
     'send_msg' => 1,
     'king_digital'=>[
         'end_point' => env('WHATSAPP_END_POINT', ''),
-        'token' => env('WHATSAPP_TOKEN', ''),
-        'instance' => env('WHATSAPP_iNSTANCE', ''),
+        'token' => env('WHATSAPP_API_KEY', ''),
+        'instance' => env('WHATSAPP_API_KEY2', ''),
     ],
     'sms4power'=>[
-        'end_point' => env('SMS4POWER_END_POINT', ''),
-        'api_key' => env('SMS4POWER_API_KEY', ''),
+        'end_point' => env('WHATSAPP_END_POINT', ''),
+        'api_key' => env('WHATSAPP_API_KEY', ''),
     ],
 ];
