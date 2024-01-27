@@ -5,6 +5,8 @@ namespace Susheelbhai\WhatsApp;
 use Illuminate\Support\ServiceProvider;
 use Susheelbhai\WhatsApp\Services\WhatsAppService;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\App;
+use Susheelbhai\WhatsApp\Contracts\WhatsAppContract;
 
 class WhatsAppServiceProvider extends ServiceProvider
 {
@@ -12,8 +14,10 @@ class WhatsAppServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/whatsapp.php','whatsapp');
         $this->app->bind('whatsapp', function(){
-            return new WhatsAppService();
+            return new WhatsAppService(App::make("Susheelbhai\WhatsApp\Contracts\WhatsAppContract"));
         });
+        $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\SMS4power::class);
+
         $loader = AliasLoader::getInstance();
         $loader->alias('WhatsApp', \Susheelbhai\WhatsApp\Services\Facades\WhatsApp::class);
     }

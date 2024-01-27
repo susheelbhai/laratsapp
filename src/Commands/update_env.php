@@ -25,10 +25,9 @@ class update_env extends Command
      */
 
     public $env_values = array(
-         'KING_END_POINT' => '',
-         'KING_DIGITAL_TOKEN' => '',
-         'KING_DIGITAL_iNSTANCE' => '',
-
+         'WHATSAPP_END_POINT' => '',
+         'WHATSAPP_TOKEN' => '',
+         'WHATSAPP_iNSTANCE' => '',
     );
 
     public function handle()

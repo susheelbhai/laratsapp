@@ -1,27 +1,32 @@
 <?php
 
-
 namespace Susheelbhai\WhatsApp\Services;
 
-use Susheelbhai\WhatsApp\Repository\KingDigital;
+use Susheelbhai\WhatsApp\Contracts\WhatsAppContract;
 
-
-class WhatsAppService
+class WhatsAppService 
 {
+    protected $whatsAppRepo;
 
+    public function __construct(
+        WhatsAppContract $whatsAppRepo
+    ) {
+        $this->whatsAppRepo = $whatsAppRepo;
+    }
     public function sendText($data)
     {
-        $repo = new KingDigital();
-        return $repo->sendText($data);
+        return $this->whatsAppRepo->sendText($data);
     }
     public function sendOTP($data)
     {
-        $repo = new KingDigital();
-        return $repo->sendOTP($data);
+        return $this->whatsAppRepo->sendOTP($data);
+    }
+    public function sendPdf($data)
+    {
+        return $this->whatsAppRepo->sendPdf($data);
     }
     public function sendMedia($data)
     {
-        $repo = new KingDigital();
-        return $repo->sendMedia($data);
+        return $this->whatsAppRepo->sendMedia($data);
     }
 }

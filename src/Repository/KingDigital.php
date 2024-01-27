@@ -3,10 +3,10 @@
 namespace Susheelbhai\WhatsApp\Repository;
 
 use Illuminate\Support\Facades\Http;
+use Susheelbhai\WhatsApp\Contracts\WhatsAppContract;
 
-class KingDigital
+class KingDigital implements WhatsAppContract
 {
-
     public $token;
     public $instance;
     public $end_point;
