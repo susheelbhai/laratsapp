@@ -27,6 +27,12 @@ class KingDigital implements WhatsAppContract
         $url = "{$this->end_point}?type=text-message&token={$this->token}&instance={$this->instance}&phone={$data['phone']}&message={$message}";
         return $this->action($url);
     }
+    public function sendPdf($data)
+    {
+        $message = $data['message'];
+        $url = "{$this->end_point}?&apikey={$this->token}&mobile={$data['phone']}&msg={$message}&pdf={$data['pdf']}";
+        return $this->action($url);
+    }
     public function sendMedia($data)
     {
         $message = $data['message'];

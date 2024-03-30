@@ -16,7 +16,13 @@ class WhatsAppServiceProvider extends ServiceProvider
         $this->app->bind('whatsapp', function(){
             return new WhatsAppService(App::make("Susheelbhai\WhatsApp\Contracts\WhatsAppContract"));
         });
-        $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\SMS4power::class);
+        if (config('whatsapp.default_provider') == 'sms4power') {
+            $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\SMS4power::class); # code...
+        }
+        if (config('whatsapp.default_provider') == 'king_digital') {
+            $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\KingDigital::class); # code...
+        }
+        
 
         $loader = AliasLoader::getInstance();
         $loader->alias('WhatsApp', \Susheelbhai\WhatsApp\Services\Facades\WhatsApp::class);

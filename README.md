@@ -63,8 +63,8 @@ Media message example
 ```
 $data = [
             'phone' => '9999999999',
-            'message' => 'message content'
-            'media_url' => 'http://url.extension/media_file'
+            'message' => 'message content',
+            'media_url' => 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         ];
 WhatsApp::sendMedia($data);
 ```
