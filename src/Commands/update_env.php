@@ -25,6 +25,8 @@ class update_env extends Command
      */
 
     public $env_values = array(
+         'SEND_WHATSAPP_MSG' => '0',
+         'WHATSAPP_TEST_NUMBER' => '9999999999',
          'WHATSAPP_END_POINT' => '',
          'WHATSAPP_API_KEY' => '',
          'WHATSAPP_API_KEY2' => '',

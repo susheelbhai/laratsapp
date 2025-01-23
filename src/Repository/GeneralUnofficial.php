@@ -31,14 +31,26 @@ class GeneralUnofficial implements WhatsAppContract
     }
     public function sendPdf($data)
     {
+        if (config('app.env') == 'local') {
+            $media_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+        }
+        else{
+            $media_url = $data['pdf'];
+        }
         $message = $data['message'];
-        $url = "{$this->end_point}?&apikey={$this->token}&number={$data['phone']}&msg={$message}&pdf={$data['pdf']}";
+        $url = "{$this->end_point}?type=media&access_token={$this->token}&instance_id={$this->instance}&number={$data['phone']}&message={$message}&media_url={$media_url}";
         return $this->action($url);
     }
     public function sendMedia($data)
     {
+        if (config('app.env') == 'local') {
+            $media_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+        }
+        else{
+            $media_url = $data['media_url'];
+        }
         $message = $data['message'];
-        $url = "{$this->end_point}?type=media&access_token={$this->token}&instance_id={$this->instance}&number={$data['phone']}&message={$message}&media_url={$data['media_url']}";
+        $url = "{$this->end_point}?type=media&access_token={$this->token}&instance_id={$this->instance}&number={$data['phone']}&message={$message}&media_url={$media_url}";
         return $this->action($url);
     }
     
@@ -57,7 +69,7 @@ class GeneralUnofficial implements WhatsAppContract
             }
             return array(
                 'status' => $response['status'],
-                'msg' => $response['message'],
+                'msg' => $response['message'] ?? 'something went wrong',
             );
         }
     }
