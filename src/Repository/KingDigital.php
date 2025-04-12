@@ -29,8 +29,14 @@ class KingDigital implements WhatsAppContract
     }
     public function sendPdf($data)
     {
+        if (config('app.env') == 'local') {
+            $media_url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+        }
+        else{
+            $media_url = $data['pdf'];
+        }
         $message = $data['message'];
-        $url = "{$this->end_point}?&apikey={$this->token}&mobile={$data['phone']}&msg={$message}&pdf={$data['pdf']}";
+        $url = "{$this->end_point}?&apikey={$this->token}&mobile={$data['phone']}&msg={$message}&pdf={$media_url}";
         return $this->action($url);
     }
     public function sendMedia($data)
