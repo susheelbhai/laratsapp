@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\Channels;
+namespace Susheelbhai\WhatsApp\Notifications\Channels;
 
 use Illuminate\Notifications\Notification;
 use Susheelbhai\WhatsApp\Services\WhatsAppService;

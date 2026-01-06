@@ -7,7 +7,7 @@ use Susheelbhai\WhatsApp\Services\WhatsAppService;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\App;
 use Illuminate\Notifications\ChannelManager;
-use App\Notifications\Channels\WhatsAppChannel;
+use Susheelbhai\WhatsApp\Notifications\Channels\WhatsAppChannel;
 
 
 class WhatsAppServiceProvider extends ServiceProvider
@@ -53,7 +53,7 @@ class WhatsAppServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . "/../config" => config_path('/'),
-            __DIR__ . "/../Notifications" => app_path('/Notifications'),
+            __DIR__ . "/Notifications" => app_path('/Notifications'),
         ], 'whatsapp');
     }
 }
