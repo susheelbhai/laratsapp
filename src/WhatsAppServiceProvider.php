@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Susheelbhai\WhatsApp\Services\WhatsAppService;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\App;
+use Illuminate\Notifications\ChannelManager;
+use App\Notifications\Channels\WhatsAppChannel;
+
 
 class WhatsAppServiceProvider extends ServiceProvider
 {
@@ -40,12 +43,17 @@ class WhatsAppServiceProvider extends ServiceProvider
                 \Susheelbhai\WhatsApp\Commands\update_env::class,
             ]);
         }
+
+        $this->app->make(ChannelManager::class)->extend('whatsapp', function ($app) {
+            return new WhatsAppChannel();
+        });
     }
 
     public function registerPublishable()
     {
         $this->publishes([
-            __dir__ . "/../config" => config_path('/'),
+            __DIR__ . "/../config" => config_path('/'),
+            __DIR__ . "/../Notifications" => app_path('/Notifications'),
         ], 'whatsapp');
     }
 }
