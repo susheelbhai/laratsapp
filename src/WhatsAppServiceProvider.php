@@ -30,6 +30,10 @@ class WhatsAppServiceProvider extends ServiceProvider
             $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\SMS4power::class);
         }
 
+        if (config('whatsapp.default_provider') == 'mock') {
+            $this->app->bind(\Susheelbhai\WhatsApp\Contracts\WhatsAppContract::class, \Susheelbhai\WhatsApp\Repository\Mock::class);
+        }
+
         $loader = AliasLoader::getInstance();
         $loader->alias('WhatsApp', \Susheelbhai\WhatsApp\Services\Facades\WhatsApp::class);
     }
@@ -47,6 +51,9 @@ class WhatsAppServiceProvider extends ServiceProvider
         $this->app->make(ChannelManager::class)->extend('whatsapp', function ($app) {
             return new WhatsAppChannel();
         });
+
+        // Captured mock WhatsApp messages are viewed through the unified
+        // /mock_message inbox (WhatsApp tab) provided by laravel-basekit.
     }
 
     public function registerPublishable()
